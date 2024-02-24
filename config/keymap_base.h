@@ -86,7 +86,17 @@
   )
 
 // Left and right hand home row mods
-MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)
+//MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)
+  ZMK_BEHAVIOR(hml, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <TAPPING_TERM>;
+    quick-tap-ms = <QUICK_TAP_TERM>;
+    require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_TERM>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <KEYS_R THUMBS>;
+    hold-trigger-on-release;
+  )
+
 //MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)
 
 // Used for HRM combos

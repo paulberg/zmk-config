@@ -16,6 +16,7 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include "extra_keys.h"
 
 #ifdef CONFIG_WIRELESS
     #include <dt-bindings/zmk/bt.h>

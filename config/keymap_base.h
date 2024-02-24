@@ -86,7 +86,7 @@
   )
 
 // Left and right hand home row mods
-//MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)
+MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)
 //MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)
 
 // Used for HRM combos

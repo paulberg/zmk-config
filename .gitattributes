@@ -1,0 +1,5 @@
+* text=auto
+
+# Tell github what language these are in
+*.dtsi linguist-language=C++
+*.keymap linguist-language=C++

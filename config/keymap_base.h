@@ -11,8 +11,7 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Affero General Public License for more details.
 // 
-// You should have received a copy of the GNU Affero General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the GNU Affero General Public License// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -87,13 +86,13 @@
   )
 
 // Left and right hand home row mods
-MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)
-MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)
+//MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)
+//MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)
 
 // Used for HRM combos
-MAKE_HRM(hml_repeat, &kp, &key_repeat, KEYS_R THUMBS)
-MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)
-MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)
+//MAKE_HRM(hml_repeat, &kp, &key_repeat, KEYS_R THUMBS)
+//MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)
+//MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)
 
 // tap: comma | shift + tap: semicolon
 SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp SEMICOLON)

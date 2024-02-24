@@ -87,15 +87,32 @@
 
 // Left and right hand home row mods
 //MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)
-  ZMK_BEHAVIOR(hml, hold_tap,
-    flavor = "balanced";
-    tapping-term-ms = <TAPPING_TERM>;
-    quick-tap-ms = <QUICK_TAP_TERM>;
-    require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_TERM>;
-    bindings = <&kp>, <&kp>;
-    hold-trigger-key-positions = <KEYS_R THUMBS>;
-    hold-trigger-on-release;
-  )
+// ZMK_BEHAVIOR(hml, hold_tap,
+//    flavor = "balanced";
+//    tapping-term-ms = <TAPPING_TERM>;
+//    quick-tap-ms = <QUICK_TAP_TERM>;
+//    require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_TERM>;
+//    bindings = <&kp>, <&kp>;
+//    hold-trigger-key-positions = <KEYS_R THUMBS>;
+//    hold-trigger-on-release;
+//  )
+
+/ {
+  behaviors {
+    hml:hml {
+      label="ZB_hml";
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <220>;
+      quick-tap-ms = <175>;
+      require-prior-idle-ms = <150>;
+      bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4 LH2 LH1 LH0 RH0 RH1 RH2>;
+      hold-trigger-on-release;
+    };
+  };
+};
 
 //MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)
 

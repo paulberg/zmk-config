@@ -21,4 +21,4 @@
 #define CONFIG_WIRELESS
 
 // source the main keymap
-#include "keymap_base.h"
+#include "base.keymap"

@@ -5,12 +5,12 @@
 // it under the terms of the GNU Affero General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Affero General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Affero General Public License// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <behaviors.dtsi>
@@ -40,12 +40,12 @@
 // Global behavior defalts
 
 // mods deactivate caps-word, requires PR #1451
-&caps_word {  
+&caps_word {
   /delete-property/ ignore-modifiers;
 };
 
 // mod-tap confg
-&mt { 
+&mt {
     flavor = "tap-preferred";
     tapping-term-ms = <TAPPING_TERM>;
     quick-tap-ms = <TAPPING_TERM>;
@@ -64,7 +64,7 @@
     release-after-ms = <STICKY_TERM>;
 
     // no double capitalization when rolling keys
-    quick-release;             
+    quick-release;
 };
 
 // sticky-layer config
@@ -93,6 +93,10 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)
 MAKE_HRM(hml_repeat, &kp, &key_repeat, KEYS_R THUMBS)
 MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)
 MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)
+
+// tap: left/right parenthesis | shft + tap: less-than/greater-than
+SIMPLE_MORPH(lpar_lt, SFT, &kp LPAR, &kp LT)
+SIMPLE_MORPH(rpar_gt, SFT, &kp RPAR, &kp GT)
 
 // tap: comma | shift + tap: semicolon
 SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp SEMICOLON)

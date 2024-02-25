@@ -74,14 +74,17 @@
 #if !defined COMBO_TERM
     #define COMBO_TERM 30
 #endif
+
 #if !defined COMBO_HOOK
     #define COMBO_HOOK
 #endif
 
 #define MACRO_CHOOSER5(_1, _2, _3, _4, _5, FUNC, ...) FUNC
 #define ZMK_COMBO(...) MACRO_CHOOSER5(__VA_ARGS__, ZMK_COMBO_5_ARGS, ZMK_COMBO_4_ARGS)(__VA_ARGS__)
+
 #define ZMK_COMBO_4_ARGS(name, combo_bindings, keypos, combo_layers) \
     ZMK_COMBO_5_ARGS(name, combo_bindings, keypos, combo_layers, COMBO_TERM)
+
 #define ZMK_COMBO_5_ARGS(name, combo_bindings, keypos, combo_layers, combo_timeout) \
     / { \
         combos { \

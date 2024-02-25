@@ -29,11 +29,39 @@
 #define COMBO_HOOK require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_TERM>;
 #include "zmk_helper.h"
 
+// If we want to persist a layer beyond some sticky layer term we run into an issue.
+// This is useful in cases such as one handed ten key entry or arrow navigation.
+// When any ZMK momentary layer switch ends, such as releasing the key in the case of
+// momentary layer switch, or the expiration of the sticky term for a sticky layer, ZMK
+// naturally deactivates the layer. This means that anything we do to persist that layer
+// while the layer is temporarally active will also be dismissed, foiling our plans.
+// We can avoid this by instead switching to a higher level transparent layer and activating
+// the layer we would like indirectly as a conditional layer. Then, when the temporary
+// transparent layer is dismissed, the target layer will not be (explicitly) dismissed.
+// However, the target layer, being conditional, must have a true condition in order to be
+// active at all. To enable the target layer we create yet another transparent layer that
+// also conditionally activates the target layer that will not be explicitly dismissed
+// when the temporary layer is. To permanently activate the target layer we can toggle this
+// second transparent layer on which will conditionally activate the target layer and
+// persist once the momentary layer is dismissed. This way we can simply create a toggle key
+// on the target layer and the target layer will persist beyond the dismissal of the
+// momentary layer. Here we define such transparent layers with a _MO and _LK suffix.
+// These layers are completely transparent and only serve as conditional switches for
+// the target layer.
 #define DEF 0
 #define FUN 1
 #define NUM 2
 #define NAV 3
 #define SYS 4
+#define FUN_MO 5
+#define FUN_LK 6
+#define NUM_MO 7
+#define NUM_LK 8
+#define NAV_MO 9
+#define NAV_LK 10
+#define SYS_MO 11
+#define SYS_LK 12
+
 
 // Combos need layers defined first
 #include "combos.dtsi"
@@ -109,6 +137,8 @@ SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &kp COLON)
 // tap: qmark | shift + tap: excl
 SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
 
+//#define ZMK_TRANSPARENT_LAYER(NAME) \
+
 #define XXX &none
 #define ___ &trans
 
@@ -124,7 +154,7 @@ ZMK_LAYER(base,
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
-ZMK_LAYER(fn,
+ZMK_LAYER(fun,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
     X_LT     XXX           XXX           XXX           XXX           XXX             X_MT     &kp F12       &kp F7        &kp F8        &kp F9        &kp PAUSE_BREAK X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
@@ -156,6 +186,18 @@ ZMK_LAYER(nav,
     X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     XXX             X_MM     &kp PG_DN     &kp LEFT      &kp DOWN      &kp RIGHT     XXX             X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     XXX           XXX           XXX           XXX           XXX             X_MB     XXX           XXX           XXX           XXX           XXX             X_RB
+//├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
+    X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
+//╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
+)
+
+ZMK_LAYER(sys,
+//╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
+    X_LT                                _BT_SEL_KEYS_                                X_MT     XXX           XXX           XXX           XXX           XXX             X_RT
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+    X_LM     XXX           XXX           XXX           XXX           &bootloader     X_MM     &bootloader   XXX           XXX           XXX           XXX             X_RM
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+    X_LB     XXX           XXX           XXX           XXX           &sys_reset      X_MB     &sys_reset    XXX           XXX           XXX           XXXa             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯

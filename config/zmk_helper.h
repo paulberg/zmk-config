@@ -5,12 +5,12 @@
 // it under the terms of the GNU Affero General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Affero General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -45,6 +45,7 @@
 // ZMK_LAYER
 #define MACRO_CHOOSER3(_1, _2, _3, FUNC, ...) FUNC
 #define ZMK_LAYER(...) MACRO_CHOOSER3(__VA_ARGS__, ZMK_LAYER_3_ARGS, ZMK_LAYER_2_ARGS)(__VA_ARGS__)
+
 #define ZMK_LAYER_2_ARGS(name, layout) \
     / { \
         keymap { \
@@ -96,11 +97,11 @@
     };
 
 // ZMK_CONDITIONAL_LAYER
-#define ZMK_CONDITIONAL_LAYER(if_layers, then_layer) \
+#define ZMK_CONDITIONAL_LAYER(name, if_layers, then_layer) \
     / { \
         conditional_layers { \
             compatible = "zmk,conditional-layers"; \
-            tri_layer { \
+            name { \
                 if-layers = <if_layers>; \
                 then-layer = <then_layer>; \
             }; \

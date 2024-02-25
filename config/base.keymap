@@ -147,7 +147,19 @@ ZMK_CONDITIONAL_LAYER(sysMo, SYS_MO, SYS)
 ZMK_CONDITIONAL_LAYER(sysLk, SYS_LK, SYS)
 ZMK_CONDITIONAL_LAYER(sys, NUM FUN, SYS_MO)
 
-//#define ZMK_TRANSPARENT_LAYER(NAME) \
+#define LT_FUN_RET &lt FUN_MO RET
+#define LT_NUM_DEL &lt NUM_MO DEL
+#define LT_NAV_BSPC &lt NAV_MO BSPC
+
+// Copy an argument X times
+#define ZMK_COPY_X2(x) x x
+#define ZMK_COPY_X4(x) ZMK_COPY_X2(x) ZMK_COPY_X2(x)
+#define ZMK_COPY_X8(x) ZMK_COPY_X4(x) ZMK_COPY_X4(x)
+#define ZMK_COPY_X16(x) ZMK_COPY_X8(x) ZMK_COPY_X8(x)
+#define ZMK_COPY_X32(x) ZMK_COPY_X16(x) ZMK_COPY_X16(x)
+
+// Create a layer consisting of only transparent keys
+#define ZMK_TRANSPARENT_LAYER(name) ZMK_LAYER(name, ZMK_COPY_X32(&trans) &trans &trans)
 
 #define XXX &none
 #define ___ &trans
@@ -160,17 +172,17 @@ ZMK_LAYER(base,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &qexcl        &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &lt NAV BSPC  &lt NUM DEL     X_MH     &lt FUN RET   &kp SPACE                                                 X_RH
+    X_LH                                               LT_NAV_BSPC   LT_NUM_DEL      X_MH     LT_FUN_RET    &kp SPACE                                                 X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
 ZMK_LAYER(fun,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     XXX           XXX           XXX           XXX           XXX             X_MT     &kp F12       &kp F7        &kp F8        &kp F9        &kp PAUSE_BREAK X_RT
+    X_LT     XXX           XXX           XXX           XXX           &kp INS         X_MT     &kp F12       &kp F7        &kp F8        &kp F9        &kp PAUSE_BREAK X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     XXX             X_MM     &kp F11       &kp F4        &kp F5        &kp F6        &kp PSCRN       X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     XXX           XXX           XXX           XXX           XXX             X_MB     &kp F10       &kp F1        &kp F2        &kp F3        &kp SCLK        X_RB
+    X_LB     &tog FUN_LK   XXX           XXX           XXX           XXX             X_MB     &kp F10       &kp F1        &kp F2        &kp F3        &kp SCLK        X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
@@ -179,11 +191,11 @@ ZMK_LAYER(fun,
 
 ZMK_LAYER(num,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     XXX           XXX           XXX           XXX           XXX             X_MT     &kp INS       &kp KP_N7     &kp KP_N8     &kp KP_N9     XXX             X_RT
+    X_LT     XXX           XXX           XXX           XXX           XXX             X_MT     XXX           &kp KP_N7     &kp KP_N8     &kp KP_N9     XXX             X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     XXX             X_MM     &kp KP_N0     &kp KP_N4     &kp KP_N5     &kp KP_N6     XXX             X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     XXX           XXX           XXX           XXX           XXX             X_MB     &comma_morph  &kp KP_N1     &kp KP_N2     &kp KP_N3     &dot_morph      X_RB
+    X_LB     &tog NUM_LK   XXX           XXX           XXX           XXX             X_MB     &comma_morph  &kp KP_N1     &kp KP_N2     &kp KP_N3     &dot_morph      X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
@@ -195,7 +207,7 @@ ZMK_LAYER(nav,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     XXX             X_MM     &kp PG_DN     &kp LEFT      &kp DOWN      &kp RIGHT     XXX             X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     XXX           XXX           XXX           XXX           XXX             X_MB     XXX           XXX           XXX           XXX           XXX             X_RB
+    X_LB     &tog NAV_LK   XXX           XXX           XXX           XXX             X_MB     XXX           XXX           XXX           XXX           XXX             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
@@ -207,8 +219,17 @@ ZMK_LAYER(sys,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     XXX           XXX           XXX           XXX           &bootloader     X_MM     &bootloader   XXX           XXX           XXX           XXX             X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     XXX           XXX           XXX           XXX           &sys_reset      X_MB     &sys_reset    XXX           XXX           XXX           XXX             X_RB
+    X_LB     &tog SYS_LK   XXX           XXX           XXX           &sys_reset      X_MB     &sys_reset    XXX           XXX           XXX           XXX             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
+
+ZMK_TRANSPARENT_LAYER(fun_mo)
+ZMK_TRANSPARENT_LAYER(fun_lk)
+ZMK_TRANSPARENT_LAYER(num_mo)
+ZMK_TRANSPARENT_LAYER(num_lk)
+ZMK_TRANSPARENT_LAYER(nav_mo)
+ZMK_TRANSPARENT_LAYER(nav_lk)
+ZMK_TRANSPARENT_LAYER(sys_mo)
+ZMK_TRANSPARENT_LAYER(sys_lk)

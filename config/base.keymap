@@ -25,6 +25,8 @@
     #define _BT_SEL_KEYS_ &trans &trans &trans &trans &trans
 #endif
 
+// Use require-prior-idle-ms for combos
+#define COMBO_HOOK require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_TERM>;
 #include "zmk_helper.h"
 
 #define DEF 0
@@ -33,7 +35,7 @@
 #define NAV 3
 #define SYS 4
 
-// Includes needing layers defined
+// Combos need layers defined first
 #include "combos.dtsi"
 
 //////////////////////////////

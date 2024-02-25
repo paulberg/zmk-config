@@ -23,9 +23,6 @@
 //  ╰───────╮ LH2 LH1 LH0 │ │ RH0 RH1 RH2 ╭───────╯
 //          ╰─────────────╯ ╰─────────────╯
 
-// use require-prior-idle-ms for combos
-#define COMBO_HOOK require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_TERM>;
-
 // make homerow combos tap-only (so HRMs can be chorded instantaneously)
 #define HRC_TAB    &hml         LA(LCTRL) TAB
 #define HRC_REPEAT &hml_repeat  LS(LCTRL) 0

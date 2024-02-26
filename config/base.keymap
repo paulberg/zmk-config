@@ -137,6 +137,10 @@ SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &kp COLON)
 // tap: qmark | shift + tap: excl
 SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
 
+ZMK_BEHAVIOR(email, macro,
+  bindings = <&kp P &kp A &kp U &kp L &kp AT &kp P &kp A &kp U &kp L &kp W &kp B &kp E &kp R &kp G &kp DOT &kp C &kp O &kp M>;
+)
+
 ZMK_CONDITIONAL_LAYER(numMo, NUM_MO, NUM)
 ZMK_CONDITIONAL_LAYER(numLk, NUM_LK, NUM)
 ZMK_CONDITIONAL_LAYER(navMo, NAV_MO, NAV)
@@ -180,7 +184,7 @@ ZMK_LAYER(fun,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
     X_LT     XXX           XXX           XXX           XXX           &kp INS         X_MT     &kp F12       &kp F7        &kp F8        &kp F9        &kp PAUSE_BREAK X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     XXX             X_MM     &kp F11       &kp F4        &kp F5        &kp F6        &kp PSCRN       X_RM
+    X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     &email          X_MM     &kp F11       &kp F4        &kp F5        &kp F6        &kp PSCRN       X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &tog FUN_LK   XXX           XXX           XXX           XXX             X_MB     &kp F10       &kp F1        &kp F2        &kp F3        &kp SCLK        X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤

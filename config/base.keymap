@@ -147,7 +147,7 @@ ZMK_BEHAVIOR(email, macro,
     flavor = "balanced"; \
     tapping-term-ms = <TAPPING_TERM>; \
     quick-tap-ms = <QUICK_TAP_TERM>; \
-    bindings = <&pair_ ## NAME>, <&kp OPEN>; \
+    bindings = <&pair_ ## NAME>, <&kp>; \
   )
 
 MAKE_PAIR(pr_lbkt, LEFT_BRACKET, RIGHT_BRACKET)

@@ -150,7 +150,7 @@ ZMK_BEHAVIOR(email, macro,
     bindings = <&macro_tap &kp OPEN &kp CLOSE> \
       , <&macro_release &kp LSHFT> \
       , <&macro_release &kp RSHFT> \
-      , <&macro_tap &kp LEFT>; \t
+      , <&macro_tap &kp LEFT>; \
   ) \
   ZMK_BEHAVIOR(pair_ ## OPEN, hold_tap, \
     flavor = "balanced"; \

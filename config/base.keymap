@@ -64,7 +64,7 @@
 
 // Key pairs, such as () and [] are defined later to create the opening char on tap, both on hold and insert cursor between.
 // The macro thar creates them creates a device tree binding to &pair_KEYNAME which takes
-// an ignored key and the KENAME itself. This macro allows us to refer to this mod tap behavior as PR(KEYNAME).
+// an ignored key and the KENAME itself. This macro allows us to refer to this hold tap behavior as PR(KEYNAME).
 // For example, open parenthesis is refered to as PR(LPAR).
 #define PR(OPEN) &pair_ ## OPEN 0 OPEN
 
@@ -147,11 +147,10 @@ ZMK_BEHAVIOR(email, macro,
 // Paired chars. Open on tap, pair on hold with cursor inside.
 #define MAKE_PAIR(OPEN, CLOSE) \
   ZMK_BEHAVIOR(pair_macro_ ## OPEN, macro, \
-    bindings = <&kp OPEN &kp CLOSE> \
+    bindings = <&macro_tap &kp OPEN &kp CLOSE> \
       , <&macro_release &kp LSHFT> \
       , <&macro_release &kp RSHFT> \
-      , <&kp LEFT &kp H &kp E> \
-      , <&kp L &kp L>; \
+      , <&macro_tap &kp LEFT>; \t
   ) \
   ZMK_BEHAVIOR(pair_ ## OPEN, hold_tap, \
     flavor = "balanced"; \

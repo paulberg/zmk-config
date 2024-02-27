@@ -139,7 +139,7 @@ ZMK_BEHAVIOR(email, macro,
 )
 
 // Paired chars. Open on tap, pair on hold with cursor inside.
-ZMK_BEHAVIOR(pairbkt, macro
+ZMK_BEHAVIOR(pairbkt, macro,
   bindings = <&kp LBKT &kp RBKT &kp LEFT>;
 )
 

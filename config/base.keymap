@@ -125,13 +125,14 @@ MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)
 MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)
 
 // Basic non-shifted / shifted key variants.
-SIMPLE_MORPH(lpar_lt, SFT, &kp LEFT_PARENTHESIS, &kp LESS_THAN)
-SIMPLE_MORPH(rpar_gt, SFT, &kp RIGHT_PARENTHESIS, &kp GREATER_THAN)
-SIMPLE_MORPH(comma_semi, SFT, &kp COMMA, &kp SEMICOLON)
-SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
-SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
-SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
-SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
+ZMK_SIMPLE_MORPH(lpar_lt, SFT, &kp LEFT_PARENTHESIS, &kp LESS_THAN)
+ZMK_SIMPLE_MORPH(rpar_gt, SFT, &kp RIGHT_PARENTHESIS, &kp GREATER_THAN)
+ZMK_SIMPLE_MORPH(comma_semi, SFT, &kp COMMA, &kp SEMICOLON)
+ZMK_SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
+ZMK_SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
+ZMK_SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
+ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
+ZMK_SIMPLE_MORPH(rpt_ins, SFT, &key_repeat, &kp INSERTe)
 
 // My email address
 ZMK_BEHAVIOR(email, macro,
@@ -212,15 +213,17 @@ ZMK_LAYER(fun,
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
+// Number layer
+// 10-key like on right hand. X, Y, I and N are exposed for scientific calculator use.
 #define NUMPAD_HMR &kp KP_N0 &hmr RSHFT KP_N4 &hmr RCTRL KP_N5 &hmr LALT KP_N6 &kp RGUI
 
 ZMK_LAYER(num,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
     X_LT     ___           ___           ___           XXX           ___             X_MT     XXX           &kp KP_N7     &kp KP_N8     &kp KP_N9     XXX             X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     XXX             X_MM                                 NUMPAD_HMR                                  X_RM
+    X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     ___             X_MM                                 NUMPAD_HMR                                  X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &tog NUM_LK   XXX           XXX           XXX           ___             X_MB     XXX           &kp KP_N1     &kp KP_N2     &kp KP_N3     XXX             X_RB
+    X_LB     &tog NUM_LK   XXX           XXX           XXX           ___             X_MB     XXX           &kp KP_N1     &kp KP_N2     &kp KP_N3     ___             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯

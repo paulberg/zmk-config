@@ -109,7 +109,7 @@
         then-layer = <then_layer>; \
       }; \
     }; \
-  t};
+  };
 
 // reuse basic mod-morph scheme to morph on either left or right modifier
 #define ZMK_SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2) \

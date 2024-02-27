@@ -23,6 +23,8 @@
 //  ╰───────╮ LH2 LH1 LH0 │ │ RH0 RH1 RH2 ╭───────╯
 //          ╰─────────────╯ ╰─────────────╯
 
+#define PR(NAME) &pr_ ## NAME 0 0
+
 // make homerow combos tap-only (so HRMs can be chorded instantaneously)
 #define HRC_TAB    &hml         LA(LCTRL) TAB
 #define HRC_REPEAT &hml_repeat  LS(LCTRL) 0
@@ -43,7 +45,7 @@ ZMK_COMBO(sel_all,&kp LC(A),    LB4 LB1,     DEF NAV NUM, COMBO_TERM_FAST)
 // Horizontal combos - right hand
 ZMK_COMBO(lpar,  HRC_LPAR,      RM1 RM2,     DEF     NUM, COMBO_TERM_FAST)
 ZMK_COMBO(rpar,  HRC_RPAR,      RM2 RM3,     DEF     NUM, COMBO_TERM_FAST)
-ZMK_COMBO(lbkt,  PR(lbkt),  RB1 RB2,     DEF     NUM, COMBO_TERM_FAST)
+ZMK_COMBO(lbkt,  PR(lbkt),      RB1 RB2,     DEF     NUM, COMBO_TERM_FAST)
 ZMK_COMBO(rbkt,  &kp RBKT,      RB2 RB3,     DEF     NUM, COMBO_TERM_FAST)
 
 // Vertical combos - left hand

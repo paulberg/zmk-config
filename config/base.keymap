@@ -139,8 +139,6 @@ ZMK_BEHAVIOR(email, macro,
 )
 
 // Paired chars. Open on tap, pair on hold with cursor inside.
-#define PR(NAME) &pr_ ## NAME 0 0
-
 #define MAKE_PAIR(NAME, OPEN, CLOSE) \
   ZMK_BEHAVIOR(pair_ ## NAME, macro, \
     bindings = <&kp OPEN &kp CLOSE &kp LEFT>; \

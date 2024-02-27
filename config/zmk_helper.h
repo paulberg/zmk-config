@@ -101,18 +101,18 @@
 
 // ZMK_CONDITIONAL_LAYER
 #define ZMK_CONDITIONAL_LAYER(name, if_layers, then_layer) \
-    / { \
-        conditional_layers { \
-            compatible = "zmk,conditional-layers"; \
-            name { \
-                if-layers = <if_layers>; \
-                then-layer = <then_layer>; \
-            }; \
-        }; \
-    };
+  / { \
+    conditional_layers { \
+      compatible = "zmk,conditional-layers"; \
+      name { \
+        if-layers = <if_layers>; \
+        then-layer = <then_layer>; \
+      }; \
+    }; \
+  t};
 
 // reuse basic mod-morph scheme to morph on either left or right modifier
-#define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2) \
+#define ZMK_SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2) \
   ZMK_BEHAVIOR(NAME, mod_morph, \
     mods = <(MOD_L ## MOD|MOD_R ## MOD)>; \
     bindings = <BINDING1>, <BINDING2>; \

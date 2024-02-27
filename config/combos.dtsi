@@ -23,8 +23,6 @@
 //  ╰───────╮ LH2 LH1 LH0 │ │ RH0 RH1 RH2 ╭───────╯
 //          ╰─────────────╯ ╰─────────────╯
 
-#define PR(OPEN) &pair_ ## OPEN 0 OPEN
-
 // make homerow combos tap-only (so HRMs can be chorded instantaneously)
 #define HRC_TAB    &hml         LA(LCTRL) TAB
 #define HRC_REPEAT &hml_repeat  LS(LCTRL) 0

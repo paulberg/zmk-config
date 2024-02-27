@@ -62,6 +62,11 @@
 #define SYS_MO 11
 #define SYS_LK 12
 
+// Key pairs, such as () and [] are defined later to create the opening char on tap, both on hold and insert cursor between.
+// The macro thar creates them creates a device tree binding to &pair_KEYNAME which takes
+// an ignored key and the KENAME itself. This macro allows us to refer to this mod tap behavior as PR(KEYNAME).
+// For example, open parenthesis is refered to as PR(LPAR).
+#define PR(OPEN) &pair_ ## OPEN 0 OPEN
 
 // Combos need layers defined first
 #include "combos.dtsi"

@@ -145,7 +145,8 @@ ZMK_BEHAVIOR(email, macro,
     bindings = <&kp OPEN &kp CLOSE> \
       , <&macro_release &kp LSHFT> \
       , <&macro_release &kp RSHFT> \
-      , <&kp LEFT>; \
+      , <&kp LEFT &kp H &kp E> \
+      , <&kp L &kp L>; \
   ) \
   ZMK_BEHAVIOR(pair_ ## OPEN, hold_tap, \
     flavor = "balanced"; \
@@ -155,11 +156,11 @@ ZMK_BEHAVIOR(email, macro,
   )
 
 MAKE_PAIR(LBKT, RIGHT_BRACKET)
-//MAKE_PAIR(pr_lbrc, LEFT_BRACE, RIGHT_BRACE)
-//MAKE_PAIR(pr_lt, LESS_THAN, GREATER_THAN)
-//MAKE_PAIR(pr_lpar, LEFT_PARENTHESIS, RIGHT_PARENTHESIS)
-//MAKE_PAIR(pr_sqt, SINGLE_QUOTE, SINGLE_QUOTE)
-//MAKE_PAIR(pr_dqt, DOUBLE_QUOTES, DOUBLE_QUOTES)
+MAKE_PAIR(LBRC, RIGHT_BRACE)
+MAKE_PAIR(LT, GREATER_THAN)
+MAKE_PAIR(LPAR, RIGHT_PARENTHESIS)
+MAKE_PAIR(SQT, SINGLE_QUOTE)
+MAKE_PAIR(DQT, DOUBLE_QUOTES)
 MAKE_PAIR(GRAVE, GRAVE)
 MAKE_PAIR(PRCNT, PERCENT)
 

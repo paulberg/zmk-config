@@ -76,31 +76,31 @@
 
 // mod-tap confg
 &mt {
-    flavor = "tap-preferred";
-    tapping-term-ms = <TAPPING_TERM>;
-    quick-tap-ms = <TAPPING_TERM>;
-    hold-trigger-key-positions = <0>;
+  flavor = "tap-preferred";
+  tapping-term-ms = <TAPPING_TERM>;
+  quick-tap-ms = <TAPPING_TERM>;
+  hold-trigger-key-positions = <0>;
 };
 
 // layer-tap config
 &lt {
-    flavor = "balanced";
-    tapping-term-ms = <TAPPING_TERM>;
-    quick-tap-ms = <QUICK_TAP_TERM>;
+  flavor = "balanced";
+  tapping-term-ms = <TAPPING_TERM>;
+  quick-tap-ms = <QUICK_TAP_TERM>;
 };
 
 // sticky-key config
 &sk {
-    release-after-ms = <STICKY_TERM>;
+  release-after-ms = <STICKY_TERM>;
 
-    // no double capitalization when rolling keys
-    quick-release;
+  // no double capitalization when rolling keys
+  quick-release;
 };
 
 // sticky-layer config
 &sl {
-    // allow chording sticky mods & layers
-    ignore-modifiers;
+  // allow chording sticky mods & layers
+  ignore-modifiers;
 };
 
 // Macro to create behaviors for home row mods by reducing cross hand false negatives
@@ -124,21 +124,28 @@ MAKE_HRM(hml_repeat, &kp, &key_repeat, KEYS_R THUMBS)
 MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)
 MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)
 
-// tap: left/right parenthesis | shft + tap: less-than/greater-than
-SIMPLE_MORPH(lpar_lt, SFT, &kp LPAR, &kp LT)
-SIMPLE_MORPH(rpar_gt, SFT, &kp RPAR, &kp GT)
+// Basic non-shifted / shifted key variants.
+SIMPLE_MORPH(lpar_lt, SFT, &kp LEFT_PARENTHESIS, &kp LESS_THAN)
+SIMPLE_MORPH(rpar_gt, SFT, &kp RIGHT_PARENTHESIS, &kp GREATER_THA&)
+SIMPLE_MORPH(comma_semi, SFT, &kp COMMA, &kp SEMICOLON)
+SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
+SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
+SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
+SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
 
-// tap: comma | shift + tap: semicolon
-SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp SEMICOLON)
-
-// tap: dot | shift + tap: colon
-SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &kp COLON)
-
-// tap: qmark | shift + tap: excl
-SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
-
+// My email address
 ZMK_BEHAVIOR(email, macro,
   bindings = <&kp P &kp A &kp U &kp L &kp AT &kp P &kp A &kp U &kp L &kp W &kp B &kp E &kp R &kp G &kp DOT &kp C &kp O &kp M>;
+)
+
+// Paired chars. Open on tap, pair on hold with cursor inside.e
+ZMK_MACRO(pairBkt, bindings = <&kp LBKT &kp RBKT &kp LEFT>;)
+
+ZMK_BEHAVIOR(lbkt, hold_tap,
+  flavor = "balanced";
+  tapping-term-ms = <TAPPING_TERM>;
+  quick-tap-ms = <QUICK_TAP_TERM>;
+  bindings = <&pairBkt>, <&kp>;
 )
 
 ZMK_CONDITIONAL_LAYER(numMo, NUM_MO, NUM)
@@ -150,10 +157,6 @@ ZMK_CONDITIONAL_LAYER(funLk, FUN_LK, FUN)
 ZMK_CONDITIONAL_LAYER(sysMo, SYS_MO, SYS)
 ZMK_CONDITIONAL_LAYER(sysLk, SYS_LK, SYS)
 ZMK_CONDITIONAL_LAYER(sys, NUM FUN, SYS_MO)
-
-#define LT_FUN_RET &lt FUN_MO RET
-#define LT_NUM_DEL &lt NUM_MO DEL
-#define LT_NAV_BSPC &lt NAV_MO BSPC
 
 // Copy an argument X times
 #define ZMK_COPY_X2(x) x x
@@ -167,14 +170,17 @@ ZMK_CONDITIONAL_LAYER(sys, NUM FUN, SYS_MO)
 
 #define XXX &none
 #define ___ &trans
+#define LT_FUN_RET &lt FUN_MO RET
+#define LT_NUM_DEL &lt NUM_MO DEL
+#define LT_NAV_BSPC &lt NAV_MO BSPC
 
 ZMK_LAYER(base,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &kp SQT       &comma_morph  &dot_morph    &kp P         &kp Y           X_MT     &kp F         &kp G         &kp C         &kp R         &kp L           X_RT
+    X_LT     &kp SQT       &comma_semi   &dot_colon    &kp P         &kp Y           X_MT     &kp F         &kp G         &kp C         &kp R         &kp L           X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &hml LGUI A   &hml LALT O   &hml LCTRL E  &hml LSHFT U  &kp I           X_MM     &kp D         &hmr RSHFT H  &hmr RCTRL T  &hmr LALT N   &hmr RGUI S     X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &qexcl        &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
+    X_LB     &qmark_excl   &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               LT_NAV_BSPC   LT_NUM_DEL      X_MH     LT_FUN_RET    &kp SPACE                                                 X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯

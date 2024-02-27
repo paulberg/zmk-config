@@ -139,7 +139,7 @@ ZMK_BEHAVIOR(email, macro,
 )
 
 // Paired chars. Open on tap, pair on hold with cursor inside.
-ZMK_MACRO(pairBkt,
+ZMK_MACRO(pairbkt,
   wait-ms = <30>;
   tap-ms = <40>;
   bindings = <&kp Z &kp M &kp K>;
@@ -153,7 +153,7 @@ ZMK_BEHAVIOR(lbkt, hold_tap,
   flavor = "balanced";
   tapping-term-ms = <TAPPING_TERM>;
   quick-tap-ms = <QUICK_TAP_TERM>;
-  bindings = <&pairBkt>, <&kp>;
+  bindings = <&pairbkt>, <&kp>;
 )
 
 ZMK_CONDITIONAL_LAYER(numMo, NUM_MO, NUM)

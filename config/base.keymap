@@ -126,7 +126,7 @@ MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)
 
 // Basic non-shifted / shifted key variants.
 SIMPLE_MORPH(lpar_lt, SFT, &kp LEFT_PARENTHESIS, &kp LESS_THAN)
-SIMPLE_MORPH(rpar_gt, SFT, &kp RIGHT_PARENTHESIS, &kp GREATER_THA&)
+SIMPLE_MORPH(rpar_gt, SFT, &kp RIGHT_PARENTHESIS, &kp GREATER_THAN)
 SIMPLE_MORPH(comma_semi, SFT, &kp COMMA, &kp SEMICOLON)
 SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
 SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)

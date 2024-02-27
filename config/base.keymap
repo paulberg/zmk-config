@@ -139,16 +139,27 @@ ZMK_BEHAVIOR(email, macro,
 )
 
 // Paired chars. Open on tap, pair on hold with cursor inside.
-ZMK_BEHAVIOR(pairbkt, macro,
-  bindings = <&kp LBKT &kp RBKT &kp LEFT>;
-)
+#define PR(NAME) NAME 0 0
 
-ZMK_BEHAVIOR(lbkt, hold_tap,
-  flavor = "balanced";
-  tapping-term-ms = <TAPPING_TERM>;
-  quick-tap-ms = <QUICK_TAP_TERM>;
-  bindings = <&pairbkt>, <&kp>;
-)
+#define MAKE_PAIR(NAME, OPEN, CLOSE) \
+  ZMK_BEHAVIOR(pair_ ## NAME, macro, \
+    bindings = <&kp OPEN &kp CLOSE &kp LEFT>; \
+  ) \
+  ZMK_BEHAVIOR(NAME, hold_tap, \
+    flavor = "balanced"; \
+    tapping-term-ms = <TAPPING_TERM>; \
+    quick-tap-ms = <QUICK_TAP_TERM>; \
+    bindings = <&pair_ ## NAME>, <&kp OPEN>; \
+  )
+
+MAKE_PAIR(lbkt, LEFT_BRACKET, RIGHT_BRACKET)
+MAKE_PAIR(lbrc, LEFT_BRACE, RIGHT_BRACE)
+MAKE_PAIR(lt, LESS_THAN, GREATER_THAN)
+MAKE_PAIR(lpar, LEFT_PARENTHESIS, RIGHT_PARENTHESIS)
+MAKE_PAIR(sqt, SINGLE_QUOTE, SINGLE_QUOTE)
+MAKE_PAIR(dqt, DOUBLE_QUOTES, DOUBLE_QUOTES)
+MAKE_PAIR(grave, GRAVE, GRAVE)
+MAKE_PAIR(pcnt, PERCENT, PERCENT)
 
 ZMK_CONDITIONAL_LAYER(numMo, NUM_MO, NUM)
 ZMK_CONDITIONAL_LAYER(numLk, NUM_LK, NUM)

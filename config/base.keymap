@@ -138,10 +138,16 @@ ZMK_BEHAVIOR(email, macro,
   bindings = <&kp P &kp A &kp U &kp L &kp AT &kp P &kp A &kp U &kp L &kp W &kp B &kp E &kp R &kp G &kp DOT &kp C &kp O &kp M>;
 )
 
-// Paired chars. Open on tap, pair on hold with cursor inside.e
+// Paired chars. Open on tap, pair on hold with cursor inside.
 ZMK_MACRO(pairBkt,
-  bindings = <&kp LBKT &kp RBKT &kp LEFT>;
+  wait-ms = <30>;
+  tap-ms = <40>;
+  bindings = <&kp Z &kp M &kp K>;
 )
+
+//MK_MACRO(pairBkt,
+//  bindings = <&kp LBKT &kp RBKT &kp LEFT>;
+//)
 
 ZMK_BEHAVIOR(lbkt, hold_tap,
   flavor = "balanced";

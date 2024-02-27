@@ -143,10 +143,6 @@ ZMK_BEHAVIOR(pairbkt, macro,
   bindings = <&kp LBKT &kp RBKT &kp LEFT>;
 )
 
-//MK_MACRO(pairBkt,
-//  bindings = <&kp LBKT &kp RBKT &kp LEFT>;
-//)
-
 ZMK_BEHAVIOR(lbkt, hold_tap,
   flavor = "balanced";
   tapping-term-ms = <TAPPING_TERM>;
@@ -211,7 +207,7 @@ ZMK_LAYER(num,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     XXX             X_MM     &kp KP_N0     &kp KP_N4     &kp KP_N5     &kp KP_N6     XXX             X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &tog NUM_LK   XXX           XXX           XXX           XXX             X_MB     &comma_morph  &kp KP_N1     &kp KP_N2     &kp KP_N3     &dot_morph      X_RB
+    X_LB     &tog NUM_LK   XXX           XXX           XXX           XXX             X_MB     &comma_semi   &kp KP_N1     &kp KP_N2     &kp KP_N3     &dot_ceo        X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯

@@ -139,25 +139,28 @@ ZMK_BEHAVIOR(email, macro,
 )
 
 // Paired chars. Open on tap, pair on hold with cursor inside.
-#define MAKE_PAIR(NAME, OPEN, CLOSE) \
-  ZMK_BEHAVIOR(pair_ ## NAME, macro, \
-    bindings = <&kp OPEN &kp CLOSE &kp LEFT>; \
+#define MAKE_PAIR(OPEN, CLOSE) \
+  ZMK_BEHAVIOR(pair_macro_ ## OPEN, macro, \
+    bindings = <&kp OPEN &kp CLOSE> \
+      , <&macro_release &kp LSHFT> \
+      , <&macro_release &kp RSHFT> \
+      , <&kp LEFT>; \
   ) \
-  ZMK_BEHAVIOR(NAME, hold_tap, \
+  ZMK_BEHAVIOR(pair_ ## OPEN, hold_tap, \
     flavor = "balanced"; \
     tapping-term-ms = <TAPPING_TERM>; \
     quick-tap-ms = <QUICK_TAP_TERM>; \
-    bindings = <&pair_ ## NAME>, <&kp>; \
+    bindings = <&pair_macro_ ## OPEN>, <&kp>; \
   )
 
-MAKE_PAIR(pr_lbkt, LEFT_BRACKET, RIGHT_BRACKET)
-MAKE_PAIR(pr_lbrc, LEFT_BRACE, RIGHT_BRACE)
-MAKE_PAIR(pr_lt, LESS_THAN, GREATER_THAN)
-MAKE_PAIR(pr_lpar, LEFT_PARENTHESIS, RIGHT_PARENTHESIS)
-MAKE_PAIR(pr_sqt, SINGLE_QUOTE, SINGLE_QUOTE)
-MAKE_PAIR(pr_dqt, DOUBLE_QUOTES, DOUBLE_QUOTES)
-MAKE_PAIR(pr_grave, GRAVE, GRAVE)
-MAKE_PAIR(pr_prcnt, PERCENT, PERCENT)
+MAKE_PAIR(LBKT, RIGHT_BRACKET)
+//MAKE_PAIR(pr_lbrc, LEFT_BRACE, RIGHT_BRACE)
+//MAKE_PAIR(pr_lt, LESS_THAN, GREATER_THAN)
+//MAKE_PAIR(pr_lpar, LEFT_PARENTHESIS, RIGHT_PARENTHESIS)
+//MAKE_PAIR(pr_sqt, SINGLE_QUOTE, SINGLE_QUOTE)
+//MAKE_PAIR(pr_dqt, DOUBLE_QUOTES, DOUBLE_QUOTES)
+MAKE_PAIR(GRAVE, GRAVE)
+MAKE_PAIR(PRCNT, PERCENT)
 
 ZMK_CONDITIONAL_LAYER(numMo, NUM_MO, NUM)
 ZMK_CONDITIONAL_LAYER(numLk, NUM_LK, NUM)

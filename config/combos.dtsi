@@ -43,15 +43,15 @@ ZMK_COMBO(sel_all,&kp LC(A),    LB4 LB1,     DEF NAV NUM, COMBO_TERM_FAST)
 // Horizontal combos - right hand
 ZMK_COMBO(lpar,  HRC_LPAR,      RM1 RM2,     DEF     NUM, COMBO_TERM_FAST)
 ZMK_COMBO(rpar,  HRC_RPAR,      RM2 RM3,     DEF     NUM, COMBO_TERM_FAST)
-ZMK_COMBO(lbkt,  &lbkt 0 0,  RB1 RB2,     DEF     NUM, COMBO_TERM_FAST)
+ZMK_COMBO(lbkt,  PR(lbkt),  RB1 RB2,     DEF     NUM, COMBO_TERM_FAST)
 ZMK_COMBO(rbkt,  &kp RBKT,      RB2 RB3,     DEF     NUM, COMBO_TERM_FAST)
 
 // Vertical combos - left hand
 ZMK_COMBO(at,    &kp AT,        LT3 LM3,     DEF NAV NUM, COMBO_TERM_SLOW)
 ZMK_COMBO(hash,  &kp HASH,      LT2 LM2,     DEF NAV NUM, COMBO_TERM_SLOW)
 ZMK_COMBO(dllr,  &kp DLLR,      LT1 LM1,     DEF NAV NUM, COMBO_TERM_SLOW)
-ZMK_COMBO(prcnt, &kp PRCNT,     LT0 LM0,     DEF NAV NUM, COMBO_TERM_SLOW)
-ZMK_COMBO(grave, &kp GRAVE,     LM3 LB3,     DEF NAV NUM, COMBO_TERM_SLOW)
+ZMK_COMBO(prcnt, PR(prcnt),     LT0 LM0,     DEF NAV NUM, COMBO_TERM_SLOW)
+ZMK_COMBO(grave, PR(grave),     LM3 LB3,     DEF NAV NUM, COMBO_TERM_SLOW)
 ZMK_COMBO(bslh,  &kp BSLH,      LM2 LB2,     DEF NAV NUM, COMBO_TERM_SLOW)
 ZMK_COMBO(equal, &kp EQUAL,     LM1 LB1,     DEF NAV NUM, COMBO_TERM_SLOW)
 ZMK_COMBO(tilde, &kp TILDE,     LM0 LB0,     DEF NAV NUM, COMBO_TERM_SLOW)

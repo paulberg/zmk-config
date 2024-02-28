@@ -120,30 +120,6 @@
     hold-trigger-on-release; \
   )
 
-// Left and right hand home row mods
-MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)
-MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)
-
-// Used for HRM combos
-MAKE_HRM(hml_repeat, &kp, &rpt_ins, KEYS_R THUMBS)
-MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)
-MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)
-
-// Basic non-shifted / shifted key variants.
-ZMK_SIMPLE_MORPH(lpar_lt, SFT, PR(LPAR), PAR(LT))
-ZMK_SIMPLE_MORPH(rpar_gt, SFT, &kp RIGHT_PARENTHESIS, &kp GREATER_THAN)
-ZMK_SIMPLE_MORPH(comma_semi, SFT, &kp COMMA, &kp SEMICOLON)
-ZMK_SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
-ZMK_SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
-ZMK_SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
-ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
-ZMK_SIMPLE_MORPH(rpt_ins, SFT, &key_repeat, &kp INSERT)
-
-// My email address
-ZMK_BEHAVIOR(email, macro,
-  bindings = <&kp P &kp A &kp U &kp L &kp AT &kp P &kp A &kp U &kp L &kp W &kp B &kp E &kp R &kp G &kp DOT &kp C &kp O &kp M>;
-)
-
 // Paired chars. Open on tap, pair on hold with cursor inside.
 #define MAKE_PAIR(OPEN, CLOSE) \
   ZMK_BEHAVIOR(pair_macro_ ## OPEN, macro, \
@@ -167,6 +143,30 @@ MAKE_PAIR(SQT, SINGLE_QUOTE)
 MAKE_PAIR(DQT, DOUBLE_QUOTES)
 MAKE_PAIR(GRAVE, GRAVE)
 MAKE_PAIR(PRCNT, PERCENT)
+
+// Left and right hand home row mods
+MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)
+MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)
+
+// Used for HRM combos
+MAKE_HRM(hml_repeat, &kp, &rpt_ins, KEYS_R THUMBS)
+MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)
+MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)
+
+// Basic non-shifted / shifted key variants.
+ZMK_SIMPLE_MORPH(lpar_lt, SFT, PR(LPAR), PR(LT))
+ZMK_SIMPLE_MORPH(rpar_gt, SFT, &kp RIGHT_PARENTHESIS, &kp GREATER_THAN)
+ZMK_SIMPLE_MORPH(comma_semi, SFT, &kp COMMA, &kp SEMICOLON)
+ZMK_SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
+ZMK_SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
+ZMK_SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
+ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
+ZMK_SIMPLE_MORPH(rpt_ins, SFT, &key_repeat, &kp INSERT)
+
+// My email address
+ZMK_BEHAVIOR(email, macro,
+  bindings = <&kp P &kp A &kp U &kp L &kp AT &kp P &kp A &kp U &kp L &kp W &kp B &kp E &kp R &kp G &kp DOT &kp C &kp O &kp M>;
+)
 
 ZMK_CONDITIONAL_LAYER(numMo, NUM_MO, NUM)
 ZMK_CONDITIONAL_LAYER(numLk, NUM_LK, NUM)

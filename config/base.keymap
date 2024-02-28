@@ -125,9 +125,25 @@
 MAKE_PAIR(LBKT, RIGHT_BRACKET)
 MAKE_PAIR(LBRC, RIGHT_BRACE)
 MAKE_PAIR(SQT, SINGLE_QUOTE)
-//MAKE_PAIR(DQT, DOUBLE_QUOTES)
 MAKE_PAIR(GRAVE, GRAVE)
 MAKE_PAIR(PRCNT, PERCENT)
+
+// Hold for Qu, tap for Q
+ZMK_BEHAVIOR(qu, macro,
+  bindings = <&macro_tap &kp Q>
+    , <&macro_release &kp LSHFT &kp RSHFT>
+    , <&macro_tap &kp U>;
+)
+
+#define HOLD_TAP(NAME, ...) \
+  ZMK_BEHAVIOR(NAME, hold_tap, \
+    flavor = "balanced"; \
+    tapping-term-ms = <TAPPING_TERM>; \
+    quick-tap-ms = <QUICK_TAP_TERM>; \
+    __VA_ARGS__ \
+  )
+
+HOLD_TAP(q_qu, bindings = <&kp Q>, <&qu>;)
 
 // Macro to create behaviors for home row mods by reducing cross hand false negatives
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS) \
@@ -159,6 +175,7 @@ ZMK_SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
 ZMK_SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
 ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
 ZMK_SIMPLE_MORPH(rpt_ins, SFT, &key_repeat, &kp INSERT)
+ZMK_SIMPLE_MORPH(cap_cap, SFT, &caps_word, &kp CAPSLOCK)
 
 // My email address
 ZMK_BEHAVIOR(email, macro,
@@ -197,7 +214,7 @@ ZMK_LAYER(base,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &hml LGUI A   &hml LALT O   &hml LCTRL E  &hml LSHFT U  &kp I           X_MM     &kp D         &hmr RSHFT H  &hmr RCTRL T  &hmr LALT N   &hmr RGUI S     X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &qmark_excl   &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
+    X_LB     &qmark_excl   &q_qu         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               LT_NAV_BSPC   LT_NUM_DEL      X_MH     LT_FUN_RET    &kp SPACE                                                 X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
@@ -205,11 +222,11 @@ ZMK_LAYER(base,
 
 ZMK_LAYER(fun,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     XXX           XXX           XXX           XXX           &kp INS         X_MT     &kp F12       &kp F7        &kp F8        &kp F9        &kp PAUSE_BREAK X_RT
+    X_LT     &email        &kp F19       &kp F18       &kp F17       &kp F24         X_MT     &kp F22       &kp F7        &kp F8        &kp F9        &kp PAUSE_BREAK X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     &email          X_MM     &kp F11       &kp F4        &kp F5        &kp F6        &kp PSCRN       X_RM
+    X_LM     &kp LGUI      &hml LALT F16 &hml LCTRL F15 &hml LSHFT F14 &kp 20        X_MM     &kp F10       &hmr RSHFT F4 &hmr RCTRL F5 &hmr LALT F6  &hmr RGUI PSCRN X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &tog FUN_LK   XXX           XXX           XXX           XXX             X_MB     &kp F10       &kp F1        &kp F2        &kp F3        &kp SCLK        X_RB
+    X_LB     &tog FUN_LK   &kp F13       &kp F12        &kp F11      &kp F23         X_MB     &kp F21       &kp F1        &kp F2        &kp F3        &kp SCLK        X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯

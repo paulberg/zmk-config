@@ -123,7 +123,7 @@
 // Paired chars. Open on tap, pair on hold with cursor inside.
 #define MAKE_PAIR(OPEN, CLOSE) \
   ZMK_BEHAVIOR(pair_macro_ ## OPEN, macro, \
-    bindings = <&macro_tap &kp OPEN>
+    bindings = <&macro_tap &kp OPEN> \
       , <&macro_tap &kp CLOSE> \
       , <&macro_release &kp LSHFT> \
       , <&macro_release &kp RSHFT> \

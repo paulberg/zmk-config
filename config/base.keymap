@@ -62,6 +62,11 @@
 #define SYS_MO 11
 #define SYS_LK 12
 
+#define FUNS FUN FUN_MO FUN_LK
+#define NUMS NUM NUM_MO NUM_LK
+#define NAVS NAV NAV_MO NAV_LK
+#define SYSS SYS SYS_MO SYS_LK
+
 // Key pairs, such as () and [] are defined later to create the opening char on tap, both on hold and insert cursor between.
 // The macro thar creates them creates a device tree binding to &pair_KEYNAME which takes
 // an ignored key and the KENAME itself. This macro allows us to refer to this hold tap behavior as PR(KEYNAME).

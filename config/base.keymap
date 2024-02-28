@@ -176,6 +176,9 @@ ZMK_SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
 ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
 ZMK_SIMPLE_MORPH(caps_ins, SFT, &caps_word, &kp INSERT)
 
+// Turn off some keyboard shortcuts to get me into the habit of using my kb ones
+ZMK_SIMPLE_MORPH(c_c, CTRL, &kp C, &kp C)
+
 // My email address
 ZMK_BEHAVIOR(email, macro,
   bindings = <&kp P &kp A &kp U &kp L &kp AT &kp P &kp A &kp U &kp L &kp W &kp B &kp E &kp R &kp G &kp DOT &kp C &kp O &kp M>;

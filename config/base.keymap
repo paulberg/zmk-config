@@ -162,7 +162,7 @@ MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)
 MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)
 
 // Used for HRM combos
-MAKE_HRM(hml_repeat, &kp, &rpt_ins, KEYS_R THUMBS)
+MAKE_HRM(hml_repeat, &kp, &repeat, KEYS_R THUMBS)
 MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)
 MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)
 
@@ -173,9 +173,8 @@ ZMK_SIMPLE_MORPH(comma_semi, SFT, &kp COMMA, &kp SEMICOLON)
 ZMK_SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
 ZMK_SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
 ZMK_SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
-ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
-ZMK_SIMPLE_MORPH(rpt_ins, SFT, &key_repeat, &kp INSERT)
-ZMK_SIMPLE_MORPH(cap_cap, SFT, &caps_word, &kp Q)
+ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)''
+ZMK_SIMPLE_MORPH(caps_ins, SFT, &caps_word, &kp INSERT)
 
 // My email address
 ZMK_BEHAVIOR(email, macro,
@@ -242,7 +241,7 @@ ZMK_LAYER(num,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     ___             X_MM                                 NUMPAD_HMR                                  X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &tog NUM_LK   XXX           XXX           &kp CAPSLOCK           ___             X_MB     XXX           &kp KP_N1     &kp KP_N2     &kp KP_N3     ___             X_RB
+    X_LB     &tog NUM_LK   XXX           XXX           XXX           ___             X_MB     XXX           &kp KP_N1     &kp KP_N2     &kp KP_N3     ___             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯

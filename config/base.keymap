@@ -126,8 +126,6 @@
 
 MAKE_PAIR(LBKT, RIGHT_BRACKET)
 MAKE_PAIR(LBRC, RIGHT_BRACE)
-MAKE_PAIR(LT, GREATER_THAN)
-MAKE_PAIR(LPAR, RIGHT_PARENTHESIS)
 MAKE_PAIR(SQT, SINGLE_QUOTE)
 MAKE_PAIR(DQT, DOUBLE_QUOTES)
 MAKE_PAIR(GRAVE, GRAVE)
@@ -155,7 +153,7 @@ MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)
 MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)
 
 // Basic non-shifted / shifted key variants.
-ZMK_SIMPLE_MORPH(lpar_lt, SFT, &kp LEFT_PARENTHESIS, PR(LT))
+ZMK_SIMPLE_MORPH(lpar_lt, SFT, &kp LEFT_PARENTHESIS, &kp LESS_THAN)
 ZMK_SIMPLE_MORPH(rpar_gt, SFT, &kp RIGHT_PARENTHESIS, &kp GREATER_THAN)
 ZMK_SIMPLE_MORPH(comma_semi, SFT, &kp COMMA, &kp SEMICOLON)
 ZMK_SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
@@ -197,7 +195,7 @@ ZMK_CONDITIONAL_LAYER(sys, NUM FUN, SYS_MO)
 
 ZMK_LAYER(base,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &kp SQT       &comma_semi   &dot_colon    &kp P         &kp Y           X_MT     &kp F         &kp G         &kp C         &kp R         &kp L           X_RT
+    X_LT     PR(SQT)       &comma_semi   &dot_colon    &kp P         &kp Y           X_MT     &kp F         &kp G         &kp C         &kp R         &kp L           X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &hml LGUI A   &hml LALT O   &hml LCTRL E  &hml LSHFT U  &kp I           X_MM     &kp D         &hmr RSHFT H  &hmr RCTRL T  &hmr LALT N   &hmr RGUI S     X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤

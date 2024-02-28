@@ -129,6 +129,7 @@ MAKE_PAIR(GRAVE, GRAVE)
 MAKE_PAIR(PRCNT, PERCENT)
 
 // Hold for Q, tap for Qu
+// Not currently active. I don't think I like this. Maybe better as 2 separate combos rather than a linger.
 ZMK_BEHAVIOR(m_qu, macro,
   wait-ms = <0>;
   tap-ms = <0>;
@@ -212,7 +213,7 @@ ZMK_LAYER(base,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &hml LGUI A   &hml LALT O   &hml LCTRL E  &hml LSHFT U  &kp I           X_MM     &kp D         &hmr RSHFT H  &hmr RCTRL T  &hmr LALT N   &hmr RGUI S     X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &qmark_excl   &qu_q Q 0     &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
+    X_LB     &qmark_excl   &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               LT_NAV_BSPC   LT_NUM_DEL      X_MH     LT_FUN_RET    &kp SPACE                                                 X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯

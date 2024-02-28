@@ -130,6 +130,7 @@ MAKE_PAIR(PRCNT, PERCENT)
 
 // Hold for Q, tap for Qu
 ZMK_BEHAVIOR(m_qu, macro,
+  wait-ms = <0>;
   bindings = <&macro_tap &kp Q>
     , <&macro_release &kp LSHFT &kp RSHFT>
     , <&macro_tap &kp U>;

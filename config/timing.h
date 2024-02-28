@@ -5,12 +5,12 @@
 // it under the terms of the GNU Affero General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Affero General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -19,7 +19,7 @@
 
 // When typing a combo, all keys must be pressed within the term.
 // Fast and slow varients
-#define COMBO_TERM_FAST 18
+#define COMBO_TERM_FAST 19
 #define COMBO_TERM_SLOW 30
 
 // If you press a tapped hold-tap again within the term of the first press,

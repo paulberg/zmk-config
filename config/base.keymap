@@ -175,7 +175,7 @@ ZMK_SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
 ZMK_SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
 ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
 ZMK_SIMPLE_MORPH(rpt_ins, SFT, &key_repeat, &kp INSERT)
-ZMK_SIMPLE_MORPH(cap_cap, SFT, &caps_word, &kp CAPSLOCK)
+ZMK_SIMPLE_MORPH(cap_cap, SFT, &caps_word, &kp Q)
 
 // My email address
 ZMK_BEHAVIOR(email, macro,

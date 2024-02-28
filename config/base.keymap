@@ -111,10 +111,8 @@
 // Paired chars. Open on tap, pair on hold with cursor inside.
 #define MAKE_PAIR(OPEN, CLOSE) \
   ZMK_BEHAVIOR(pair_macro_ ## OPEN, macro, \
-    bindings = <&macro_tap &kp OPEN> \
-      , <&macro_tap &kp CLOSE> \
-      , <&macro_release &kp LSHFT> \
-      , <&macro_release &kp RSHFT> \
+    bindings = <&macro_tap &kp OPEN &kp CLOSE> \
+      , <&macro_release &kp LSHFT &kp RSHFT> \
       , <&macro_tap &kp LEFT>; \
   ) \
   ZMK_BEHAVIOR(pair_ ## OPEN, hold_tap, \
@@ -127,7 +125,7 @@
 MAKE_PAIR(LBKT, RIGHT_BRACKET)
 MAKE_PAIR(LBRC, RIGHT_BRACE)
 MAKE_PAIR(SQT, SINGLE_QUOTE)
-MAKE_PAIR(DQT, DOUBLE_QUOTES)
+//MAKE_PAIR(DQT, DOUBLE_QUOTES)
 MAKE_PAIR(GRAVE, GRAVE)
 MAKE_PAIR(PRCNT, PERCENT)
 

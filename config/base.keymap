@@ -18,11 +18,12 @@
 #include "extra_keys.h"
 #include "timing.h"
 
+// If we are wireless, set a key row up for connecting
 #ifdef CONFIG_WIRELESS
     #include <dt-bindings/zmk/bt.h>
-    #define _BT_SEL_KEYS_ &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR
+    #define BT_SEL_KEY_ROW &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR
 #else
-    #define _BT_SEL_KEYS_ &trans &trans &trans &trans &trans
+    #define BT_SEL_KEY_ROW &trans &trans &trans &trans &trans
 #endif
 
 // Use require-prior-idle-ms for combos
@@ -78,8 +79,6 @@
 
 //////////////////////////////
 // Global behavior defalts
-
-// mods deactivate caps-word, requires PR #1451
 &caps_word {
   /delete-property/ ignore-modifiers;
 };
@@ -114,6 +113,7 @@
 };
 
 // Paired chars. Open on tap, pair on hold with cursor inside.
+// This is an ambiguous hold on HMR so we can't do it there because we can't tell if hold is a mod or pair.
 #define MAKE_PAIR(OPEN, CLOSE) \
   ZMK_BEHAVIOR(pair_macro_ ## OPEN, macro, \
     bindings = <&macro_tap &kp OPEN &kp CLOSE> \
@@ -187,11 +187,12 @@ ZMK_SIMPLE_MORPH(v_off, CTL, &kp V, &none)
 ZMK_SIMPLE_MORPH(x_off, CTL, &kp X, &none)
 ZMK_SIMPLE_MORPH(a_off, CTL, &kp A, &none)
 
-// My email address
+// My email address for binding to key
 ZMK_BEHAVIOR(email, macro,
   bindings = <&kp P &kp A &kp U &kp L &kp AT &kp P &kp A &kp U &kp L &kp W &kp B &kp E &kp R &kp G &kp DOT &kp C &kp O &kp M>;
 )
 
+// Set up conditional layer triggers
 ZMK_CONDITIONAL_LAYER(numMo, NUM_MO, NUM)
 ZMK_CONDITIONAL_LAYER(numLk, NUM_LK, NUM)
 ZMK_CONDITIONAL_LAYER(navMo, NAV_MO, NAV)
@@ -209,9 +210,7 @@ ZMK_CONDITIONAL_LAYER(sys, NUM FUN, SYS_MO)
 #define ZMK_COPY_X16(x) ZMK_COPY_X8(x) ZMK_COPY_X8(x)
 #define ZMK_COPY_X32(x) ZMK_COPY_X16(x) ZMK_COPY_X16(x)
 
-// Create a layer consisting of only transparent keys
-#define ZMK_TRANSPARENT_LAYER(name) ZMK_LAYER(name, ZMK_COPY_X32(&trans) &trans &trans)
-
+// Make key layout pretty
 #define XXX &none
 #define ___ &trans
 #define LT_FUN_RET &lt FUN_MO RET
@@ -244,7 +243,8 @@ ZMK_LAYER(fun,
 
 // Number layer
 // 10-key like on right hand. X, Y, I and N are exposed for scientific calculator use.
-#define NUMPAD_HMR &kp KP_N0 &hmr RSHFT KP_N4 &hmr RCTRL KP_N5 &hmr LALT KP_N6 &kp RGUI
+#define NUMPAD_HMR &none &hmr RSHFT KP_N4 &hmr RCTRL KP_N5 &hmr LALT KP_N6 &kp RGUI
+#define LT_FUN_0 &lt FUN_MO KP_N0
 
 ZMK_LAYER(num,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
@@ -254,7 +254,7 @@ ZMK_LAYER(num,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &tog NUM_LK   XXX           XXX           XXX           ___             X_MB     XXX           &kp KP_N1     &kp KP_N2     &kp KP_N3     ___             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
+    X_LH                                               ___           ___             X_MH     LT_FUN_0      &dot_colon                                                X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
@@ -272,7 +272,7 @@ ZMK_LAYER(nav,
 
 ZMK_LAYER(sys,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT                                _BT_SEL_KEYS_                                X_MT     XXX           XXX           XXX           XXX           XXX             X_RT
+    X_LT                                BT_SEL_KEY_ROW                               X_MT     XXX           XXX           XXX           XXX           XXX             X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     XXX           XXX           XXX           XXX           &bootloader     X_MM     &bootloader   XXX           XXX           XXX           XXX             X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
@@ -282,11 +282,14 @@ ZMK_LAYER(sys,
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
-ZMK_TRANSPARENT_LAYER(fun_mo)
-ZMK_TRANSPARENT_LAYER(fun_lk)
-ZMK_TRANSPARENT_LAYER(num_mo)
-ZMK_TRANSPARENT_LAYER(num_lk)
-ZMK_TRANSPARENT_LAYER(nav_mo)
-ZMK_TRANSPARENT_LAYER(nav_lk)
-ZMK_TRANSPARENT_LAYER(sys_mo)
-ZMK_TRANSPARENT_LAYER(sys_lk)
+// Create a layer consisting of only transparent keys
+#define TRANSPARENT_LAYER(name) ZMK_LAYER(name, ZMK_COPY_X32(&trans) &trans &trans)
+
+TRANSPARENT_LAYER(fun_mo)
+TRANSPARENT_LAYER(fun_lk)
+TRANSPARENT_LAYER(num_mo)
+TRANSPARENT_LAYER(num_lk)
+TRANSPARENT_LAYER(nav_mo)
+TRANSPARENT_LAYER(nav_lk)
+TRANSPARENT_LAYER(sys_mo)
+TRANSPARENT_LAYER(sys_lk)

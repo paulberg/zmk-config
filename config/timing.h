@@ -19,7 +19,7 @@
 
 // When typing a combo, all keys must be pressed within the term.
 // Fast and slow varients
-#define COMBO_TERM_FAST 19
+#define COMBO_TERM_FAST 20
 #define COMBO_TERM_SLOW 30
 
 // If you press a tapped hold-tap again within the term of the first press,

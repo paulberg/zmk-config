@@ -180,7 +180,7 @@ ZMK_SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
 ZMK_SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
 ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
 ZMK_SIMPLE_MORPH(crt_undr, SFT, &kp CARET, &kp UNDERSCORE)
-ZMK_SIMPLE_MORPH(tld_prct, SFT, &kp TILDE, PR(PRCNT))
+ZMK_SIMPLE_MORPH(tld_prctntt, SFT, &kp TILDE, PR(PRCNT))
 ZMK_SIMPLE_MORPH(caps_ins, SFT, &caps_word, &kp INSERT)
 
 // Turn off some keyboard shortcuts to get me into the habit of using my kb ones

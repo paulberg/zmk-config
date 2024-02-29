@@ -21,9 +21,9 @@
 // If we are wireless, set a key row up for connecting
 #ifdef CONFIG_WIRELESS
     #include <dt-bindings/zmk/bt.h>
-    #define BT_SEL_KEY_ROW &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR
+    #define BT_SEL_KEY_ROW &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt &bt BT_CLR
 #else
-    #define BT_SEL_KEY_ROW &trans &trans &trans &trans &trans
+    #define BT_SEL_KEY_ROW &trans &trans &trans &trans
 #endif
 
 // Use require-prior-idle-ms for combos
@@ -179,6 +179,8 @@ ZMK_SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
 ZMK_SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
 ZMK_SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
 ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
+ZMK_SIMPLE_MORPH(crt_undr, SFT, &kp CARET, &kp UNDERSCORE)
+ZMK_SIMPLE_MORPH(tld_prct, SFT, &kp TILDE PR(PRCNT))
 ZMK_SIMPLE_MORPH(caps_ins, SFT, &caps_word, &kp INSERT)
 
 // Turn off some keyboard shortcuts to get me into the habit of using my kb ones
@@ -219,23 +221,25 @@ ZMK_CONDITIONAL_LAYER(sys, NUM FUN, SYS_MO)
 
 ZMK_LAYER(base,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     PR(SQT)       &comma_semi   &dot_colon    &kp P         &kp Y           X_MT     &kp F         &kp G         &c_off        &kp R         &kp L           X_RT
+    X_LT     XXX           &comma_semi   &dot_colon    &kp P         &kp Y           X_MT     &kp F         &kp G         &c_off        &kp R         XXX             X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &hml LGUI A   &hml LALT O   &hml LCTRL E  &hml LSHFT U  &kp I           X_MM     &kp D         &hmr RSHFT H  &hmr RCTRL T  &hmr LALT N   &hmr RGUI S     X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &qmark_excl   &kp Q         &kp J         &kp K         &x_off          X_MB     &kp B         &kp M         &kp W         &v_off        &kp Z           X_RB
+    X_LB     &x_off        &kp B         &kp J         &kp K         XXX             X_MB     XXX           &kp M         &kp W         &v_off        &kp Z           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               LT_NAV_BSPC   LT_NUM_DEL      X_MH     LT_FUN_RET    &kp SPACE                                                 X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
+#define HRM_PAUSE &hml LGUI PAUSE_BREAK
+
 ZMK_LAYER(fun,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &email        &kp F19       &kp F18       &kp F17       &kp F24         X_MT     &kp F22       &kp F7        &kp F8        &kp F9        &kp PAUSE_BREAK X_RT
+    X_LT     XXX           &kp F19       &kp F18       &kp F17       &kp Q           X_MT     &email        &kp F7        &kp F8        &kp F9        XXX             X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &kp LGUI      &hml LALT F16 &hml LCTRL F15 &hml LSHFT F14 &kp 20        X_MM     &kp F10       &hmr RSHFT F4 &hmr RCTRL F5 &hmr LALT F6  &hmr RGUI PSCRN X_RM
+    X_LM     HRM_PAUSE     &hml LALT F16 &hml LCTRL F15 &hml LSHFT F14 &kp L         X_MM     &kp F10       &hmr RSHFT F4 &hmr RCTRL F5 &hmr LALT F6  &hmr RGUI PSCRN X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &tog FUN_LK   &kp F13       &kp F12        &kp F11      &kp F23         X_MB     &kp F21       &kp F1        &kp F2        &kp F3        &kp SCLK        X_RB
+    X_LB     &tog FUN_LK   &kp F13       &kp F12        &kp F11      XXX             X_MB     XXX           &kp F1        &kp F2        &kp F3        &kp SCLK        X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
@@ -248,11 +252,11 @@ ZMK_LAYER(fun,
 
 ZMK_LAYER(num,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     ___           ___           ___           XXX           ___             X_MT     XXX           &kp KP_N7     &kp KP_N8     &kp KP_N9     XXX             X_RT
+    X_LT     XXX           XXX           XXX           XXX           &kp Q           X_MT     XXX           &kp KP_N7     &kp KP_N8     &kp KP_N9     XXX             X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     ___             X_MM                                 NUMPAD_HMR                                  X_RM
+    X_LM     &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     &kp L           X_MM                                 NUMPAD_HMR                                  X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &tog NUM_LK   XXX           XXX           XXX           ___             X_MB     XXX           &kp KP_N1     &kp KP_N2     &kp KP_N3     ___             X_RB
+    X_LB     &tog NUM_LK   XXX           XXX           XXX           XXX             X_MB     XXX           &kp KP_N1     &kp KP_N2     &kp KP_N3     XXX             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     LT_FUN_0      &dot_colon                                                X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
@@ -272,11 +276,11 @@ ZMK_LAYER(nav,
 
 ZMK_LAYER(sys,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT                                BT_SEL_KEY_ROW                               X_MT     XXX           XXX           XXX           XXX           XXX             X_RT
+    X_LT     XXX                        BT_SEL_KEY_ROW                               X_MT     XXX           XXX           XXX           XXX           XXX             X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     XXX           XXX           XXX           XXX           &bootloader     X_MM     &bootloader   XXX           XXX           XXX           XXX             X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &tog SYS_LK   XXX           XXX           XXX           &sys_reset      X_MB     &sys_reset    XXX           XXX           XXX           XXX             X_RB
+    X_LB     &tog SYS_LK   &sys_reset    XXX           XXX           XXX             X_MB     XXX           XXX           XXX           &sys_reset    XXX             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯

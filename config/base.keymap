@@ -21,7 +21,7 @@
 // If we are wireless, set a key row up for connecting
 #ifdef CONFIG_WIRELESS
     #include <dt-bindings/zmk/bt.h>
-    #define BT_SEL_KEY_ROW &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt &bt BT_CLR
+    #define BT_SEL_KEY_ROW &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_CLR
 #else
     #define BT_SEL_KEY_ROW &trans &trans &trans &trans
 #endif

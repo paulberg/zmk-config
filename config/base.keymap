@@ -218,8 +218,8 @@ ZMK_CONDITIONAL_LAYER(sys, NUM FUN, SYS_MO)
 #define XXX &none
 #define ___ &trans
 #define LT_FUN_RET &lt FUN_MO RET
-#define LT_NUM_DEL &lt NUM_MO DEL
-#define LT_NAV_BSPC &lt NAV_MO BSPC
+#define LT_NAV_DEL &lt NAV_MO DEL
+#define LT_NUM_BSPC &lt NUM_MO BSPC
 
 ZMK_LAYER(base,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
@@ -229,7 +229,7 @@ ZMK_LAYER(base,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &kp L         &kp Q         &kp J         &kp K         &x_off          X_MB     &kp B         &kp M         &kp W         &v_off        &kp Z           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               LT_NAV_BSPC   LT_NUM_DEL      X_MH     LT_FUN_RET    &kp SPACE                                                 X_RH
+    X_LH                                               LT_NUM_BSPC   LT_NAV_DEL      X_MH     LT_FUN_RET    &kp SPACE                                                 X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 

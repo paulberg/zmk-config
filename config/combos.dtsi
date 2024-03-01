@@ -50,11 +50,11 @@ ZMK_COMBO(rbkt,    &kp RBKT,       RB2 RB3,     DEF     NUMS, COMBO_TERM_FAST)
 // Vertical combos - left hand
 ZMK_COMBO(at,      &kp AT,         LT3 LM3,     DEF NAVS NUMS, COMBO_TERM_SLOW)
 ZMK_COMBO(hash,    &hash_dllr,     LT2 LM2,     DEF NAVS NUMS, COMBO_TERM_SLOW)
-ZMK_COMBO(eq_bslh, &eq_bslh,       LM1 LB1,     DEF NAVS NUMS, COMBO_TERM_SLOW)
+ZMK_COMBO(eq_bslh, &eq_bslh,       LT1 LM1,     DEF NAVS NUMS, COMBO_TERM_SLOW)
 ZMK_COMBO(tilde,   &tld_prcnt,     LT0 LM0,     DEF NAVS NUMS, COMBO_TERM_SLOW)
 ZMK_COMBO(grave,   PR(GRAVE),      LM3 LB3,     DEF NAVS NUMS, COMBO_TERM_SLOW)
 ZMK_COMBO(q,       &kp Q,          LM2 LB2,     DEF NAVS NUMS, COMBO_TERM_SLOW)
-ZMK_COMBO(Z,       &kp Z,          LM2 LB2,     DEF NAVS NUMS, COMBO_TERM_SLOW)
+ZMK_COMBO(z,       &kp Z,          LM1 LB1,     DEF NAVS NUMS, COMBO_TERM_SLOW)
 
 // Vertical combos - right hand
 ZMK_COMBO(caret,   &crt_undr,      RT0 RM0,     DEF NAVS NUMS, COMBO_TERM_SLOW)

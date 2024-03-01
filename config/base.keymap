@@ -179,7 +179,7 @@ ZMK_SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
 ZMK_SIMPLE_MORPH(fslh_star, SFT, &kp SLASH, &kp STAR)
 ZMK_SIMPLE_MORPH(qmark_excl, SFT, &kp QUESTION, &kp EXCLAMATION)
 ZMK_SIMPLE_MORPH(minus_plus, SFT, &kp MINUS, &kp PLUS)
-ZMK_SIMPLE_MORPH(crt_undr, SFT, &kp CARET, &kp UNDERSCORE)
+ZMK_SIMPLE_MORPH(under_crt, SFT, &kp CARET, &kp UNDERSCORE)
 ZMK_SIMPLE_MORPH(tld_prcnt, SFT, &kp TILDE, PR(PRCNT))
 ZMK_SIMPLE_MORPH(hash_dllr, SFT, &kp HASH, &kp DOLLAR)
 ZMK_SIMPLE_MORPH(eq_bslh, SFT, &kp EQUAL, &kp BACKSLASH)
@@ -224,10 +224,10 @@ ZMK_CONDITIONAL_LAYER(sys, NUM FUN, SYS_MO)
 ZMK_LAYER(base,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
     X_LT     XXX           &comma_semi   &dot_colon    &kp P         &kp Y           X_MT     &kp F         &kp G         &c_off        &kp R         XXX             X_RT
-//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+//├──────┤ ├────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &hml LGUI A   &hml LALT O   &hml LCTRL E  &hml LSHFT U  &kp I           X_MM     &kp D         &hmr RSHFT H  &hmr RCTRL T  &hmr LALT N   &hmr RGUI S     X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &x_off        &kp B         &kp L         &kp K         XXX             X_MB     XXX           &kp M         &kp W         &v_off        &kp J           X_RB
+    X_LB     &kp Z         &kp Q         &kp L         &kp K         &x_off          X_MB     &kp B         &kp M         &kp W         &v_off        &kp J           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               LT_NAV_BSPC   LT_NUM_DEL      X_MH     LT_FUN_RET    &kp SPACE                                                 X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯

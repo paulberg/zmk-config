@@ -186,10 +186,10 @@ ZMK_SIMPLE_MORPH(eq_bslh, SFT, &kp EQUAL, &kp BACKSLASH)
 ZMK_SIMPLE_MORPH(caps_ins, SFT, &caps_word, &kp INSERT)
 
 // Turn off some keyboard shortcuts to get me into the habit of using my kb ones
-ZMK_SIMPLE_MORPH(c_off, CTL, &kp C, &none)
-ZMK_SIMPLE_MORPH(v_off, CTL, &kp V, &none)
-ZMK_SIMPLE_MORPH(x_off, CTL, &kp X, &none)
-ZMK_SIMPLE_MORPH(a_off, CTL, &kp A, &none)
+//ZMK_SIMPLE_MORPH(c_off, CTL, &kp C, &none)
+//ZMK_SIMPLE_MORPH(v_off, CTL, &kp V, &none)
+//ZMK_SIMPLE_MORPH(x_off, CTL, &kp X, &none)
+//ZMK_SIMPLE_MORPH(a_off, CTL, &kp A, &none)
 
 // My email address for binding to key
 ZMK_BEHAVIOR(email, macro,
